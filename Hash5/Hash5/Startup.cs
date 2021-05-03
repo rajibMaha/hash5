@@ -26,6 +26,12 @@ namespace Hash5
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +51,10 @@ namespace Hash5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ui";
             });
         }
     }
