@@ -5,6 +5,7 @@
 		<UserSecretsId>0f94a29f-a2b2-4dd9-b280-918b4864b8d8</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<SpaRoot>clientapp\</SpaRoot>
+		<RootNamespace>RforU</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

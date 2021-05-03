@@ -1,6 +1,6 @@
 using System;
 
-namespace Hash5
+namespace RforU
 {
     public class WeatherForecast
     {
