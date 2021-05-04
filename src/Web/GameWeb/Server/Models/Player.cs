@@ -7,18 +7,15 @@ namespace RforU.Models
     internal class Player : IPlayer
     {
 
-        public string PlayerId { get; set; }
-
+        public string PlayerId { get; set; } // to hold alphanumeric
         public string Name { get; set; }
         public bool Online { get; set; }
-        public IMove CurrentMove { get; set; }
-        public IPlayer Opponent {get; set; }
-
-        public PlayerType OpponentType { get; set; }
-
-        public void InitPlayer()
+        public bool Available { get; set; }
+        public DateTime OnlineSince { get; set; }
+        public PlayerType TypeOfPlayer { get; set; }
+        public void InitPlayer(string playerId)
         {
-            PlayerId = Guid.NewGuid().ToString();
+            PlayerId = playerId;
         }
     }
 }

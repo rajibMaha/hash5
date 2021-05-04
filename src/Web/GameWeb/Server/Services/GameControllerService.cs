@@ -7,15 +7,20 @@ using RforU.Interfaces;
 
 namespace RforU.Server.Services
 {
-    internal class GameControllerService : GameServiceBase ,IGameControllerService
+    internal class GameControllerService : IGameControllerService
     {
+        private readonly IActiveGameRepository _activeGameRepository;
+        private readonly IOnlinePlayerRepository _onlinePlayerRepository;
 
-        public GameControllerService(IActiveGameRepository activeGameRepository,
+        public GameControllerService(
+            IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository
-        ):base(activeGameRepository , onlinePlayerRepository)
+        )
         {
-            
+            _activeGameRepository = activeGameRepository;
+            _onlinePlayerRepository = onlinePlayerRepository;
         }
+
         /// <summary>
         /// return the list of Online player and 
         /// </summary>

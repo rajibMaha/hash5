@@ -8,6 +8,16 @@ namespace RforU.DistributedPackage.Repositories
 {
     public class CloudStorageTableRepository<TEntity> : ICloudStorageTableRepository<TEntity> where TEntity : class
     {
+        private readonly string _storageConnectionString;
+        private readonly string _tableName;
+        public CloudStorageTableRepository()
+        {
+        }
+        public CloudStorageTableRepository(string storageConnectionString , string tableName)
+        {
+            _storageConnectionString = storageConnectionString;
+            _tableName = tableName;
+        }
         public virtual void Add(TEntity entity)
         {
             throw new NotImplementedException();
