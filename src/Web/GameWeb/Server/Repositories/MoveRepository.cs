@@ -10,7 +10,7 @@ namespace RforU.Server.Repositories
     public class MoveRepository : IMoveRepository
     {
         public List<IMove> Moves { get; set; }
-        protected MoveRepository()
+        public MoveRepository()
         {
             Moves = new List<IMove>()
             {

@@ -12,7 +12,7 @@ namespace RforU.Server.Services
         private readonly IActiveGameRepository _activeGameRepository;
         private readonly IOnlinePlayerRepository _onlinePlayerRepository;
 
-        public GameControllerService(
+        internal GameControllerService(
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository
         )
@@ -40,10 +40,11 @@ namespace RforU.Server.Services
             return initData;
         }
 
+
         internal Task<List<IGame>> GetActiveGames()
         {
-            var activeGame = base.activeGameRepository.GetActiveGames();
-            
+            var activeGame = _activeGameRepository.GetActiveGames();
+
             return Task.FromResult<List<IGame>>(activeGame);
         }
 
@@ -51,9 +52,7 @@ namespace RforU.Server.Services
 
         internal Task<List<IPlayer>> GetOnlinePlayer()
         {
-
-
-            var onlinePlayer = base.onlinePlayerRepository.GetOnlinePlayers();
+            var onlinePlayer = _onlinePlayerRepository.GetOnlinePlayers();
             return Task.FromResult<List<IPlayer>>(onlinePlayer);
 
         }
