@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RforU.DistributedPackage.Exception;
-using RforU.Models;
 using RforU.Interfaces;
 
 namespace RforU.Controllers
@@ -35,7 +31,7 @@ namespace RforU.Controllers
                 return Ok(initData);
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 //TODO: implement Log
                 //TODO: use custom Exception Filter 

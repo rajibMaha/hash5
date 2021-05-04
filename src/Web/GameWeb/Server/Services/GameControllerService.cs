@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using RforU.Models;
 using RforU.Interfaces;
@@ -41,19 +39,19 @@ namespace RforU.Server.Services
         }
 
 
-        internal Task<List<IGame>> GetActiveGames()
+        internal async Task<List<IGame>> GetActiveGames()
         {
-            var activeGame = _activeGameRepository.GetActiveGames();
+            var activeGame = await _activeGameRepository.GetActiveGames();
 
-            return Task.FromResult<List<IGame>>(activeGame);
+            return activeGame;
         }
 
 
 
-        internal Task<List<IPlayer>> GetOnlinePlayer()
+        internal async Task<List<IPlayer>> GetOnlinePlayer()
         {
-            var onlinePlayer = _onlinePlayerRepository.GetOnlinePlayers();
-            return Task.FromResult<List<IPlayer>>(onlinePlayer);
+            var onlinePlayer = await _onlinePlayerRepository.GetOnlinePlayers();
+            return onlinePlayer;
 
         }
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace RforU.Interfaces
 {
     public interface IGame

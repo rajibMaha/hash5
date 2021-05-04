@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using RforU.DistributedPackage.Repositories;
 using RforU.Interfaces;
@@ -11,7 +10,7 @@ namespace RforU.Repositories
     public class ActiveGameRepository : CloudStorageTableRepository<List<IGame>>, IActiveGameRepository
     {
         //TODO: query Azure Storage "OnlineGames" Table
-        public List<IGame> GetActiveGames()
+        public Task<List<IGame>> GetActiveGames()
         {
 
             var activeGame = new List<IGame>
@@ -41,7 +40,7 @@ namespace RforU.Repositories
                 }
             };
 
-            return activeGame;
+            return Task.FromResult<List<IGame>>(activeGame);
         }
     }
 
