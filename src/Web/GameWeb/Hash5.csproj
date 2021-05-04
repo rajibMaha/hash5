@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>0f94a29f-a2b2-4dd9-b280-918b4864b8d8</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<SpaRoot>clientapp\</SpaRoot>
+		<RootNamespace>RforU</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.14" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Don't publish the SPA source files, and do not show them in the project files list -->
+		<Compile Remove="clientapp\**" />
+		<Compile Remove="Interfaces\**" />
+		<Content Remove="clientapp\**" />
+		<Content Remove="Interfaces\**" />
+		<EmbeddedResource Remove="clientapp\**" />
+		<EmbeddedResource Remove="Interfaces\**" />
+		<None Remove="clientapp\**" />
+		<None Remove="Interfaces\**" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\BuildingBlocks\Rfor.UDistributedPackage\RforU.DistributedPackage.csproj" />
+	</ItemGroup>
+
+	
+
+</Project>
