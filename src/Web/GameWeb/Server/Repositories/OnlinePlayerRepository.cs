@@ -16,10 +16,10 @@ namespace RforU.Server.Repositories
         {
             var onlinePlayer = new List<IPlayer>()
             {
-                new Player() {Name = "Player1", Online = true, PlayerId = 1},
-                new Player() {Name = "Player21", Online = true, PlayerId = 21},
-                new Player() {Name = "Player31", Online = true, PlayerId = 31},
-                new Player() {Name = "Player41", Online = true, PlayerId = 41}
+                new Player() {Name = "Player1", Online = true, PlayerId =  Guid.NewGuid().ToString()},
+                new Player() {Name = "Player21", Online = true, PlayerId =  Guid.NewGuid().ToString()},
+                new Player() {Name = "Player31", Online = true, PlayerId =  Guid.NewGuid().ToString()},
+                new Player() {Name = "Player41", Online = true, PlayerId =  Guid.NewGuid().ToString()}
             };
 
             return onlinePlayer;

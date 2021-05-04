@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RforU.DistributedPackage.Repositories;
+using RforU.DistributedPackage.Interfaces;
 using RforU.Interfaces;
 
 namespace RforU.Interfaces

@@ -7,5 +7,6 @@ namespace RforU.Interfaces
         string GameId { get; set; }
         bool Active { get; set; }
         List<IPlayer> Players { get; set; }
+        void InitGame();
     }
 }
