@@ -12,11 +12,11 @@ namespace RforU.DistributedPackage.Repositories
         public CloudStorageTableRepository()
         {
         }
-        public CloudStorageTableRepository(string storageConnectionString , string tableName)
-        {
-            _storageConnectionString = storageConnectionString;
-            _tableName = tableName;
-        }
+        //public CloudStorageTableRepository(string storageConnectionString , string tableName)
+        //{
+        //    _storageConnectionString = storageConnectionString;
+        //    _tableName = tableName;
+        //}
         public virtual void Add(TEntity entity)
         {
             throw new NotImplementedException();

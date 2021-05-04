@@ -2,7 +2,7 @@
 using RforU.Interfaces;
 using RforU.Models;
 
-namespace RforU.Server.Repositories
+namespace RforU.Repositories
 {
     public class MoveRepository : IMoveRepository
     {

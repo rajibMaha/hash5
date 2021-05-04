@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 using RforU.Models;
 using RforU.Interfaces;
 
-namespace RforU.Server.Services
+namespace RforU.Services
 {
     internal class GameControllerService : IGameControllerService
     {
         private readonly IActiveGameRepository _activeGameRepository;
         private readonly IOnlinePlayerRepository _onlinePlayerRepository;
 
-        internal GameControllerService(
+        public GameControllerService(
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository
         )

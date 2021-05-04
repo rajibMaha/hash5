@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
 #region Application Reff
-using RforU.Server.Models;
+using RforU.Models;
 using RforU.Interfaces;
 #endregion
 
-namespace RforU.Server.Services
+namespace RforU.Services
 {
 
 
@@ -15,7 +15,7 @@ namespace RforU.Server.Services
         private readonly IOnlinePlayerRepository _onlinePlayerRepository;
         private readonly IMoveRepository _moveRepository;
 
-        internal GameService(
+        public GameService(
 
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository,

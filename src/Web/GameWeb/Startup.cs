@@ -25,6 +25,7 @@ namespace RforU
             {
                 configuration.RootPath = "wwwroot";
             });
+            RegisterDIService.Register(ref services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,11 +44,19 @@ namespace RforU
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "apiDefault",
+                    pattern: "/{controller}/{action=Index}/{id?}");
             });
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ui";
+                spa.Options.SourcePath = "/wwwroot";
+                spa.Options.DefaultPage = "/index.html";
+                spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
+                {
+                    RequestPath = ""
+                };
+
             });
         }
     }

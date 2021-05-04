@@ -1,7 +1,7 @@
 ﻿using RforU.Interfaces;
 
 
-namespace RforU.Server.Models
+namespace RforU.Models
 {
   
 

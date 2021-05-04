@@ -32,6 +32,7 @@ namespace RforU.DistributedPackage.MiddleWare
         {
             service.AddSwaggerGen();
             service.AddHttpContextAccessor();
+            service.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
             RegisterServices.Register(ref service);
             return service;
         }
