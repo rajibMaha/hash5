@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,58 +8,52 @@ using RforU.DistributedPackage.Repositories;
 using RforU.Interfaces;
 using RforU.Models;
 
+#endregion
+
 namespace RforU.Repositories
 {
-    public class ActiveGameRepository: CloudStorageTableRepository<List<IGame>>, IActiveGameRepository
+    public class ActiveGameRepository : CloudStorageTableRepository<List<IGame>>, IActiveGameRepository
     {
+
+       
         //TODO: query Azure Storage "OnlineGames" Table
-        public List<IGame> GetActiveGames()
+        public Task<List<IGame>> GetActiveGames(string PlayerId)
         {
-
-            var activeGame = new List<IGame>()
-            {
-                new Game()
-                {
-                    GameId = Guid.NewGuid().ToString(), Players = new List<IPlayer>()
-                    {
-                        new Player() {Name = "Player10", Online = true, PlayerId = Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player210", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player310", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player410", Online = true, PlayerId =  Guid.NewGuid().ToString()}
-
-                    },
-                    Active = true
-                },
-
-                new Game()
-                {
-                    GameId = Guid.NewGuid().ToString(), Players = new List<IPlayer>()
-                    {
-                        new Player() {Name = "Player100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player2100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player3100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player4100", Online = true, PlayerId =  Guid.NewGuid().ToString()}
-
-                    },
-                    Active = true
-                },
-
-                new Game()
-                {
-                    GameId = Guid.NewGuid().ToString(), Players = new List<IPlayer>()
-                    {
-                        new Player() {Name = "Player100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player2100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player3100", Online = true, PlayerId =  Guid.NewGuid().ToString()},
-                        new Player() {Name = "Player4100", Online = true, PlayerId =  Guid.NewGuid().ToString()}
-
-                    },
-                    Active = true
-                },
-            };
-
-            return activeGame;
+            // this will goes in storage Table TableQuery
+            var userActivedGame =
+                DummyActiveGameData.ActiveGame.Where(g => g.OpponentId == PlayerId || g.PrimaryPlayerId == PlayerId).ToList();
+            return Task.FromResult<List<IGame>>(userActivedGame);
         }
     }
 
+
+     static class DummyActiveGameData
+    {
+       public static List<IGame> ActiveGame = new List<IGame>
+        {
+            new Game
+            {
+                GameId = "AAAA-01",//Guid.NewGuid().ToString(),
+                PrimaryPlayerId = "Player1",
+                OpponentId = "",
+                PrimaryPlayerMove = "Rock",
+                Active = true
+            },
+            new Game
+            {
+                GameId = "AAAA-02",//Guid.NewGuid().ToString(),
+                PrimaryPlayerId = "Player2",
+                OpponentId = "Player100",
+                Active = true
+            },
+            new Game
+            {
+                GameId = "AAAA-03",//Guid.NewGuid().ToString(),
+                PrimaryPlayerId = "Player3",
+                OpponentId = "Player1",
+                PrimaryPlayerMove = "Paper",
+                Active = true
+            }
+        };
+    }
 }

@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
+using RforU.DistributedPackage.Interfaces;
+using RforU.DistributedPackage.Repositories;
+
 
 namespace RforU.DistributedPackage.MiddleWare
 {
@@ -9,7 +10,12 @@ namespace RforU.DistributedPackage.MiddleWare
     {
         public static void Register(ref IServiceCollection service)
         {
-            
+            //singleton 
+
+            // scoped
+           
+            //transit 
+
         }
     }
 }

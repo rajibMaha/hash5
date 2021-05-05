@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
+using System.Threading.Tasks;
 using RforU.DistributedPackage.Interfaces;
 
 namespace RforU.DistributedPackage.Repositories
 {
     public class CloudStorageTableRepository<TEntity> : ICloudStorageTableRepository<TEntity> where TEntity : class
     {
-        public virtual void Add(TEntity entity)
+        private readonly string _storageConnectionString;
+        private readonly string _tableName;
+        public CloudStorageTableRepository()
         {
-            throw new NotImplementedException();
+        }
+        //public CloudStorageTableRepository(string storageConnectionString , string tableName)
+        //{
+        //    _storageConnectionString = storageConnectionString;
+        //    _tableName = tableName;
+        //}
+        public virtual Task<bool> Add(TEntity entity)
+        {
+            return Task.FromResult<bool>(true);
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)
@@ -54,8 +64,10 @@ namespace RforU.DistributedPackage.Repositories
             throw new NotImplementedException();
         }
 
+       
 
-        public virtual TEntity Get(int id)
+
+        public virtual TEntity Get(dynamic id)
         {
             throw new NotImplementedException();
         }

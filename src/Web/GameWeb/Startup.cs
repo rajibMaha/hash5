@@ -1,8 +1,12 @@
+#region
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+#endregion
 
 namespace RforU
 {
@@ -19,21 +23,16 @@ namespace RforU
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
             // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "wwwroot";
-            });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "wwwroot"; });
+            RegisterDIService.Register(ref services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 
@@ -43,11 +42,18 @@ namespace RforU
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    "apiDefault",
+                    "/{controller}/{action=Index}/{id?}");
             });
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ui";
+                spa.Options.SourcePath = "/wwwroot";
+                spa.Options.DefaultPage = "/index.html";
+                spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
+                {
+                    RequestPath = ""
+                };
             });
         }
     }

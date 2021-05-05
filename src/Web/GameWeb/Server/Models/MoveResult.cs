@@ -1,10 +1,11 @@
-﻿using RforU.Interfaces;
+﻿#region
 
+using RforU.Interfaces;
 
-namespace RforU.Server.Models
+#endregion
+
+namespace RforU.Models
 {
-  
-
     public class MoveResult : IMoveResult
     {
         public bool Win { get; set; }

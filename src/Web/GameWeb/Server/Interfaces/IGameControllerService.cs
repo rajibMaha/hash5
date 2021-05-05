@@ -1,9 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿#region
+
+using System.Threading.Tasks;
+
+#endregion
 
 namespace RforU.Interfaces
 {
     public interface IGameControllerService
     {
-        Task<IInitialData> GetInitialData(string userId);
+        Task<IGameData> GetInitialData(string userId);
+        Task<bool> AddCurrent(IPlayer user);
+        Task<IPlayer> GetPlayer(string userId);
     }
 }

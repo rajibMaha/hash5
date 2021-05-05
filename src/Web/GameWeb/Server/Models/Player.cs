@@ -1,24 +1,27 @@
-﻿using System;
-using RforU.Enums;
+﻿#region
+
+using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RforU.Interfaces;
+
+#endregion
 
 namespace RforU.Models
 {
-    internal class Player : IPlayer
+    public class Player : IPlayer
     {
-
-        public string PlayerId { get; set; }
-
+        public string PlayerId { get; set; } // to hold alphanumeric
         public string Name { get; set; }
         public bool Online { get; set; }
-        public IMove CurrentMove { get; set; }
-        public IPlayer Opponent {get; set; }
+        public bool Available { get; set; }
+        public DateTime OnlineSince { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public string TypeOfPlayer { get; set; }
 
-        public PlayerType OpponentType { get; set; }
-
-        public void InitPlayer()
+        public void InitPlayer(string playerId)
         {
-            PlayerId = Guid.NewGuid().ToString();
+            PlayerId = playerId;
         }
     }
 }
