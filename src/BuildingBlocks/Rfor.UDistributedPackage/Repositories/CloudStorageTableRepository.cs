@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using RforU.DistributedPackage.Interfaces;
 
 namespace RforU.DistributedPackage.Repositories
@@ -17,9 +18,9 @@ namespace RforU.DistributedPackage.Repositories
         //    _storageConnectionString = storageConnectionString;
         //    _tableName = tableName;
         //}
-        public virtual void Add(TEntity entity)
+        public virtual Task<bool> Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<bool>(true);
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)
@@ -63,8 +64,10 @@ namespace RforU.DistributedPackage.Repositories
             throw new NotImplementedException();
         }
 
+       
 
-        public virtual TEntity Get(int id)
+
+        public virtual TEntity Get(dynamic id)
         {
             throw new NotImplementedException();
         }

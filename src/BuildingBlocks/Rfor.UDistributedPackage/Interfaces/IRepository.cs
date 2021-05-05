@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace RforU.DistributedPackage.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        void Add(TEntity entity);
+        Task<bool> Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
 
         void Update(TEntity entity);
@@ -19,7 +20,7 @@ namespace RforU.DistributedPackage.Interfaces
 
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         TEntity GetSingleOrDefault(Expression<Func<TEntity, bool>> predicate);
-        TEntity Get(int id);
+        TEntity Get(dynamic id);
         IEnumerable<TEntity> GetAll();
     }
 }

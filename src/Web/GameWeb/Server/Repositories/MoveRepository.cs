@@ -1,12 +1,17 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using RforU.Interfaces;
 using RforU.Models;
+
+#endregion
 
 namespace RforU.Repositories
 {
     public class MoveRepository : IMoveRepository
     {
         public List<IMove> Moves { get; set; }
+
         public MoveRepository()
         {
             Moves = new List<IMove>()
@@ -17,9 +22,9 @@ namespace RforU.Repositories
             };
         }
 
-        public List<IMove> Get() => Moves;
-
-
-
+        public List<IMove> Get()
+        {
+            return Moves;
+        }
     }
 }

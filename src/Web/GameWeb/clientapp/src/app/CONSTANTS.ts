@@ -1,5 +1,8 @@
 const   RforUCONSTANTS = {
-CurrentVersion : "v1"
-
+CurrentVersion : "v1",
+SESSIONSTORAGE_TOKEN : "RockPaperScissors_TOKEN",
+SESSIONSTORAGE_ENSURESTORAGE : "RockPaperScissors_ENSURESTORAGE",
+BASIC_COMPUTERPLAYER_ID :"CCC-01",
+ADVANCED_COMPUTERPLAYER_ID:"AAA-01"
 }
 export default RforUCONSTANTS

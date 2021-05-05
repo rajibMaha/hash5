@@ -1,29 +1,34 @@
-﻿using System.Collections.Generic;
+﻿#region
 
 #region Application Reff
+
+using System.Collections.Generic;
 using RforU.Models;
 using RforU.Interfaces;
+
+#endregion
+
 #endregion
 
 namespace RforU.Services
 {
-
-
-    internal class GameService :  IGameService
+    internal class GameService : IGameService
     {
         private readonly IActiveGameRepository _activeGameRepository;
         private readonly IOnlinePlayerRepository _onlinePlayerRepository;
+        private readonly IStagedGameRepository _stagedGameRepository;
         private readonly IMoveRepository _moveRepository;
 
         public GameService(
-
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository,
+            IStagedGameRepository stagedGameRepository,
             IMoveRepository moveRepository
         )
         {
             _activeGameRepository = activeGameRepository;
             _onlinePlayerRepository = onlinePlayerRepository;
+            _stagedGameRepository = stagedGameRepository;
             _moveRepository = moveRepository;
         }
 
@@ -40,9 +45,8 @@ namespace RforU.Services
             //    ? $"hurray You Win, {myMove.Name} Beats  opponent(s) move(s): {opponentsMovesNames}"
             //    : $"Sorry Your Move {myMove.Name} did not Beat any opponent(s) move(s): {opponentsMovesNames}  "; 
             //#endregion
-            
+
             return new MoveResult();
         }
     }
-
 }

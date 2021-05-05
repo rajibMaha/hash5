@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿#region
+
 using Microsoft.Extensions.DependencyInjection;
 using RforU.Interfaces;
 using RforU.Models;
 using RforU.Repositories;
 using RforU.Services;
 
+#endregion
+
 namespace RforU
 {
     public class RegisterDIService
     {
-
         protected RegisterDIService()
         {
-
         }
 
 
@@ -27,18 +25,13 @@ namespace RforU
             // scoped
             service.AddScoped<IActiveGameRepository, ActiveGameRepository>();
             service.AddScoped<IOnlinePlayerRepository, OnlinePlayerRepository>();
+            service.AddScoped<IStagedGameRepository, StagedGameRepository>();
 
             //transit 
-            service.AddTransient<IGame, Game>();
             service.AddTransient<IGameControllerService, GameControllerService>();
             service.AddTransient<IGameService, GameService>();
-            service.AddTransient<IInitialData, InitialData>();
-            service.AddTransient<IMove, Move>();
-            service.AddTransient<IInitialData, InitialData>();
-            service.AddTransient<IMoveResult, MoveResult>();
-            service.AddTransient<IPlayer, Player>();
 
-
+          
         }
     }
 }

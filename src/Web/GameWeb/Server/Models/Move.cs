@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using RforU.Interfaces;
+
+#endregion
 
 namespace RforU.Models
 {
@@ -9,11 +13,10 @@ namespace RforU.Models
         public int Id { get; set; }
 
         public List<string> Beats { get; set; }
+
         public Move()
         {
             Beats = new List<string>();
         }
-
     }
-   
 }
