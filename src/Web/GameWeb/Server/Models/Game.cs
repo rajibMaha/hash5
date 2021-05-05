@@ -13,7 +13,10 @@ namespace RforU.Models
         public string GameId { get; set; }
         public bool Active { get; set; }
         public string PrimaryPlayerId { get; set; } // can be of IPlayer if rational  database used 
+        public bool PrimaryPlayerSubmitted { get; set; }
+       
         public string OpponentId { get; set; }
+        public bool OpponentSubmitted { get; set; }
         public string PrimaryPlayerMove { get; set; }
         public string OpponentMove { get; set; }
 

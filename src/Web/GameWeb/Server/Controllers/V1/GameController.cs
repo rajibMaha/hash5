@@ -93,5 +93,30 @@ namespace RforU.Controllers
 
 
         }
+
+        [HttpPost]
+        [Route("RegisterMover")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IGameData))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<bool>> AddCurrent([FromBody] GameDetails gameDetails)
+        {
+
+            try
+            {
+
+                bool initData = await _gameControllerService.AddCurrent(user);
+                return Ok(initData);
+            }
+            catch (Exception ex)
+            {
+                //TODO: implement Log
+                //TODO: use custom Exception Filter 
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    RforUErrorCodes.GetError(ErrorType.Application));
+            }
+
+
+        }
     }
 }

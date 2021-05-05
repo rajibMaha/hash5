@@ -1,13 +1,14 @@
 export type IGame = {
-    sessionID:string
+    sessionID?:string
     gameId: string,
     active: boolean,
     primaryPlayerId: string,
     opponentId: string,
-
+    PrimaryPlayerSubmitted:boolean,
+    OpponentSubmitted:boolean,
     //below can be of type Move but nosql azure storage table are not great with rational data
-    primaryPlayerMove: string,
-    opponentMove: string,
+    primaryPlayerMove?: string,
+    opponentMove?: string,
 
 }
 
@@ -32,4 +33,10 @@ export type IGameData = {
     onlinePlayers: IPlayer[],
     activeGames: IGame[],
     stagedGames: IGame[]
+}
+
+export type IGameDetails = {
+    CurrentGame: IGame,
+    PrimaryPlayer: IPlayer[],
+    Opponent: IPlayer[]
 }

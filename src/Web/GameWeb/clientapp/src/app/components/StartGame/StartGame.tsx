@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { DataGrid, } from '@material-ui/data-grid';
 import Button from '@material-ui/core/Button/Button';
-import { IGame, IPlayer, PlayerType } from '../../Services/TypeDefinations';
+import { IGame, IGameDetails, IPlayer, PlayerType } from '../../Services/TypeDefinations';
 import { forEach } from 'lodash';
 
-import MyStageGamesStyle, {MyStageGamesStyledTableRow} from './MyStageGamesStyle';
+import StartGameStyle, { MyStageGamesStyledTableRow } from './StartGameStyle';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,66 +15,74 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import RforUCONSTANTS from '../../CONSTANTS';
+import { Backdrop, CircularProgress, Fab, Grid, Paper } from '@material-ui/core';
+import { LockPlayer,RegisterMove } from '../../Services/GameManagerService';
+import { Container } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import { Guid } from "guid-typescript";
+import { CraeteGame } from '../../Services/Utils';
 
+const StartGame = (props: { PrimaryPlayer: IPlayer, Opponent: IPlayer }) => {
 
-const MyStageGames = (props: { Games: IGame[], HandleSelection: (opponentId: IPlayer) => any }) => {
+  const { PrimaryPlayer, Opponent } = props;
 
-  const { Games, HandleSelection } = props;
-  const [games, SetGames] = useState<IGame[]>(Games)
-
+  const [SessionID, SetSessionID] = useState<string>()
+  const [Rounds, SetRounds] = useState<number>(0)
+  const [gameDetails , SetGameDetails] =  useState<IGameDetails>()
   useEffect(() => {
-   
-    SetGames(props.Games)
+    async function _lockPlayerOnLoad() {
+      await LockPlayer(PrimaryPlayer.playerId);
 
-  }, [props.Games]);
+    };
+    _lockPlayerOnLoad()
 
-  const classes = MyStageGamesStyle();
+  })
 
-const LocalHandleSelection = (row:IGame) => {
-  const emptyPlayer:IPlayer = { 
-    playerId :row.opponentId,
-    typeOfPlayer: row.opponentId === RforUCONSTANTS.ADVANCED_COMPUTERPLAYER_ID ? PlayerType.tacticalComputer 
-    :  row.opponentId === RforUCONSTANTS.BASIC_COMPUTERPLAYER_ID  ?  PlayerType.randomComputer
-    :PlayerType.human  
+  const HandleClick = (selection: string) => {
+    //implement inmemory cache , Below method is buggy
+    const game: IGame|undefined = CraeteGame(PrimaryPlayer, Opponent)
+
+    game.sessionID = SessionID;
+    game.primaryPlayerMove = selection;
+    SetRounds(Rounds+1)
+    if(Rounds > 3){
+      game.sessionID = Guid.create().toString();
+      SetRounds(0);
+    }
+    SetGameDetails({...(gameDetails as any ), CurrentGame:game})
+    RegisterMove(gameDetails);
+
   }
-  HandleSelection(emptyPlayer);
-
-}
 
 
   return (
-    <div className={classes.tableContainer}>
-       Requests To Play
-    <TableContainer component={Paper}>
-    
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-       
-          <TableRow>
-            <TableCell align="left">Opponent</TableCell>
-            <TableCell align="left">Active</TableCell>
-            <TableCell align="right">Acknowledge</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {games && games.map((row) => (
-            <MyStageGamesStyledTableRow key={row.opponentId}>
-               <TableCell align="left">{row.opponentId}</TableCell>
-              <TableCell align="left">{row.active ? "Active" : "Not Active"}</TableCell>
-              <TableCell align="right">
-                {(<IconButton onClick={() => LocalHandleSelection(row)}>
-                  <SportsEsportsIcon color="primary" />
-                </IconButton>)}
-
-              </TableCell> 
-
-            </MyStageGamesStyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      <Container component="main" maxWidth="xl">
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Fab color="primary" aria-label="add" onClick={() => HandleClick("Rock")}>
+              <AddIcon />
+              Rock
+            </Fab>
+          </Grid>
+          <Grid item xs={6}>
+            <Fab color="primary" aria-label="add" onClick={() => HandleClick("Paper")}>
+              <AddIcon />
+              Paper
+            </Fab>
+          </Grid>
+          <Grid item xs={6}>
+            <Fab color="primary" aria-label="add" onClick={() => HandleClick("Scissors")}>
+              <AddIcon />
+              Scissors
+            </Fab>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
-  );
+
+  )
+
 }
 
-export default MyStageGames;
+export default StartGame;

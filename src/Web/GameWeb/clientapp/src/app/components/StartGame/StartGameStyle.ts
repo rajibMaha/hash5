@@ -11,13 +11,3 @@ const MyStageGamesStyle = makeStyles((theme) => ({
       // paddingRight:150
     }    
   }));
-
-  export const MyStageGamesStyledTableRow = withStyles((theme) => ({
-    root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-      },
-    },
-  }))(TableRow);
-
-  export default MyStageGamesStyle 
