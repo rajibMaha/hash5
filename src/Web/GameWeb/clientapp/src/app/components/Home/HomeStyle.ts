@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { colors, makeStyles } from "@material-ui/core";
 
  const HomeStyle = makeStyles((theme) => ({
  
@@ -11,6 +11,12 @@ import { makeStyles } from "@material-ui/core";
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  Container:{
+    background:colors.common.white,
+    paddingTop:20,
+    paddingLeft:20,
+    paddingRight:20
+  }
 }));
 
 

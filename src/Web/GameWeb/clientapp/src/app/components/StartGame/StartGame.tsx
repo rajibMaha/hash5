@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button/Button';
 import { IGame, IGameDetails, IPlayer, PlayerType } from '../../Services/TypeDefinations';
 import { forEach } from 'lodash';
 
-import StartGameStyle, { MyStageGamesStyledTableRow } from './StartGameStyle';
+import StartGameStyle from './StartGameStyle';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,7 +11,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import RforUCONSTANTS from '../../CONSTANTS';
@@ -31,7 +30,7 @@ const StartGame = (props: { PrimaryPlayer: IPlayer, Opponent: IPlayer }) => {
   const [gameDetails , SetGameDetails] =  useState<IGameDetails>()
   useEffect(() => {
     async function _lockPlayerOnLoad() {
-      await LockPlayer(PrimaryPlayer.playerId);
+      await LockPlayer(PrimaryPlayer.playerId as string);
 
     };
     _lockPlayerOnLoad()
@@ -50,7 +49,7 @@ const StartGame = (props: { PrimaryPlayer: IPlayer, Opponent: IPlayer }) => {
       SetRounds(0);
     }
     SetGameDetails({...(gameDetails as any ), CurrentGame:game})
-    RegisterMove(gameDetails);
+    RegisterMove(gameDetails as IGameDetails);
 
   }
 

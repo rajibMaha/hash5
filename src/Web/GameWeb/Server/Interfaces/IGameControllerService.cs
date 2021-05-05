@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
+using RforU.Models;
 
 #endregion
 
@@ -11,5 +12,6 @@ namespace RforU.Interfaces
         Task<IGameData> GetInitialData(string userId);
         Task<bool> AddCurrent(IPlayer user);
         Task<IPlayer> GetPlayer(string userId);
+        Task<bool> RegisterMove(GameDetails gameDetails);
     }
 }

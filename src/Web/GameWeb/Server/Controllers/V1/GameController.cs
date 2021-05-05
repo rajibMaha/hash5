@@ -95,16 +95,16 @@ namespace RforU.Controllers
         }
 
         [HttpPost]
-        [Route("RegisterMover")]
+        [Route("RegisterMove")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IGameData))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<bool>> AddCurrent([FromBody] GameDetails gameDetails)
+        public async Task<ActionResult<bool>> RegisterMover([FromBody] GameDetails gameDetails)
         {
 
             try
             {
 
-                bool initData = await _gameControllerService.AddCurrent(user);
+                bool initData = await _gameControllerService.RegisterMove(gameDetails);
                 return Ok(initData);
             }
             catch (Exception ex)

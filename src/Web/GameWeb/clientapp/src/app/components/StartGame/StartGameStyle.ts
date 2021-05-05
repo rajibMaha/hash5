@@ -1,6 +1,6 @@
 import { makeStyles, TableRow, withStyles } from "@material-ui/core";
 
-const MyStageGamesStyle = makeStyles((theme) => ({
+const StartGameStyle = makeStyles((theme) => ({
     table: {
      
     },
@@ -11,3 +11,4 @@ const MyStageGamesStyle = makeStyles((theme) => ({
       // paddingRight:150
     }    
   }));
+export default StartGameStyle

@@ -74,6 +74,14 @@ namespace RforU.Services
             return player;
         }
 
+        public Task<bool> RegisterMove(GameDetails gameDetails)
+        {
+            if (gameDetails == null || gameDetails.CurrentGame == null) {return Task.FromResult<bool>(false);}
+
+            return Task.FromResult<bool>(false);
+
+        }
+
 
         internal async Task<List<IGame>> GetActiveGames(string playerId)
         {

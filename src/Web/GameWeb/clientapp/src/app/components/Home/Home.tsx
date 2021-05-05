@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import { Backdrop, CircularProgress, Fab, Grid, Paper } from '@material-ui/core';
+import { Backdrop, CircularProgress, Container, Fab, Grid, Paper } from '@material-ui/core';
 import HomeStyles from './HomeStyle';
 import OnlinePlayers from '../OnlinePlayers/OnlinePlayers'
 import { LocalDataStore } from '../../Services/LocalDataStore';
@@ -31,7 +31,7 @@ const Home = () => {
   const [ShowSpinner, SetShowSpinner] = useState<boolean>(true)
   const [UserGameData, SetUserGameData] = useState<IGameData>()
   const [PrimaryPlayer, SetPrimaryPlayer] = useState<IPlayer>()
-  
+
 
   const [UIOptions, SetUIOptions] = useState<boolean>(false)
   const [ShowStartGame, SetShowStartGame] = useState<boolean>(false)
@@ -44,7 +44,7 @@ const Home = () => {
       const currentUser = CreateCurrentUser(userId);
       SetPrimaryPlayer(currentUser)
       await AddCurrentUser(CreateCurrentUser(userId))
-     
+
     }
   };
   ManageUser();
@@ -91,42 +91,43 @@ const Home = () => {
 
   }
 
-const PlayersDetails = (
-  <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <Grid container spacing={1}>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <OnlinePlayers Players={UserGameData?.onlinePlayers as IPlayer[]} HandleSelection={(opponent: IPlayer) => StartGame(opponent)} ></OnlinePlayers>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}></Grid>
+  const PlayersDetails = (
+    <Grid container spacing={3}>
+      <Grid item xs={6}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <MyStageGames Games={UserGameData?.stagedGames as IGame[]} HandleSelection={(opponentId: IPlayer) => StartGame(opponentId)} ></MyStageGames>
+              <OnlinePlayers Players={UserGameData?.onlinePlayers as IPlayer[]} HandleSelection={(opponent: IPlayer) => StartGame(opponent)} ></OnlinePlayers>
             </Paper>
           </Grid>
-
-        </Grid>
-        <Grid item xs={6}>
-          <ComputerPlayers HandleSelection={(opponent: IPlayer) => StartGame(opponent)} ></ComputerPlayers>
+          <Grid item xs={12}></Grid>
+          <Paper className={classes.paper}>
+            <MyStageGames Games={UserGameData?.stagedGames as IGame[]} HandleSelection={(opponentId: IPlayer) => StartGame(opponentId)} ></MyStageGames>
+          </Paper>
         </Grid>
 
       </Grid>
-)
+      <Grid item xs={6}>
+        <ComputerPlayers HandleSelection={(opponent: IPlayer) => StartGame(opponent)} ></ComputerPlayers>
+      </Grid>
 
-const StartGameElements = (
-  <div>CommingSoon StartGame</div>
-)
+    </Grid>
+  )
+
+  const StartGameElements = (
+    <div>CommingSoon StartGame</div>
+  )
 
   return (
-    <div>
+    <div className={classes.Container}>
+      <Container  >
       {spinner}
-    {!ShowStartGame && PlayersDetails}
-    {ShowStartGame && StartGameElements}
-    
+      {!ShowStartGame && PlayersDetails}
+      {ShowStartGame && StartGameElements}
+    </Container>
 
 
-    </div>
+    </div >
   );
 
 }
