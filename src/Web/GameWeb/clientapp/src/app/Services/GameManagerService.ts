@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios"
 import API from "./API"
 import { LocalDataStore } from "./LocalDataStore"
-import { IGameData, IPlayer } from "./TypeDefinations"
+import { IGame, IGameData, IGameDetails, IPlayer } from "./TypeDefinations"
 import { wait } from "./Utils"
 
 export const GetGameData = async (userId: string) => {
@@ -43,4 +43,13 @@ export  const GetPlayerFromId = async (playerId:string) => {
   return response.data || {}
 }
 
+export  const LockPlayer = async (playerId:string) => {
+    const response: AxiosResponse = await API.post(`/api/v1/Game/LockPlayer?playerId = ${playerId}`,);
+
+}
+
+export const RegisterMove = async (gameDetails:IGameDetails) => {
+
+    const response: AxiosResponse = await API.post(`/api/v1/Game/RegisterMover`,gameDetails);
+}
 
