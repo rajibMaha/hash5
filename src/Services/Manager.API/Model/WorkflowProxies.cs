@@ -8,14 +8,12 @@ namespace RforU.Manager.API.Model
         public string Baseurl { get; set; }
 
         public string OAuthEndpoint { get; set; }
-
     }
 
     public class WorkflowProxy
     {
         public string eventType { get; set; }
         public List<DispatchRoute> dispatchRoutes { get; set; }
-
     }
 
     public class DispatchRoute

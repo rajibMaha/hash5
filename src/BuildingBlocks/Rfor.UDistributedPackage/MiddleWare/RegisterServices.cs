@@ -1,7 +1,6 @@
 ﻿using Common.Events;
 using Microsoft.Extensions.DependencyInjection;
 
-
 namespace RforU.DistributedPackage.MiddleWare
 {
     public class RegisterServices
@@ -16,6 +15,4 @@ namespace RforU.DistributedPackage.MiddleWare
             service.AddScoped<IEventHubCoustomEventService, EventHubCustomEventService>();
         }
     }
-
-
 }

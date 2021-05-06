@@ -1,12 +1,12 @@
 ﻿#region
 
-using RforU.DistributedPackage.Repositories;
-using RforU.Interfaces;
-using RforU.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RforU.DistributedPackage.Repositories;
+using RforU.Interfaces;
+using RforU.Models;
 
 #endregion
 
@@ -20,7 +20,7 @@ namespace RforU.Repositories
             var archivedGame =
                 DummyArchivedGameData.ArchivedGame.Where(g =>
                     g.OpponentId == playerId || g.PrimaryPlayerId == playerId).ToList();
-            return Task.FromResult<List<IGame>>(archivedGame);
+            return Task.FromResult(archivedGame);
         }
 
         public Task Archive(IGame completedGame)
@@ -28,13 +28,14 @@ namespace RforU.Repositories
             throw new NotImplementedException();
         }
     }
-    static class DummyArchivedGameData
+
+    internal static class DummyArchivedGameData
     {
         public static List<IGame> ArchivedGame = new List<IGame>
         {
             new Game
             {
-                GameId = "AAAA-00001",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-00001", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player1",
                 OpponentId = "Player100",
                 PrimaryPlayerMove = "Rock",
@@ -42,14 +43,14 @@ namespace RforU.Repositories
             },
             new Game
             {
-                GameId = "AAAA-02",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-02", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player2",
                 OpponentId = "Player1",
                 Active = true
             },
             new Game
             {
-                GameId = "AAAA-03",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-03", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player3",
                 OpponentId = "Player100",
                 PrimaryPlayerMove = "Paper",

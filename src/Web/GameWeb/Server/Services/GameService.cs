@@ -2,9 +2,9 @@
 
 #region Application Reff
 
+using System.Collections.Generic;
 using RforU.Interfaces;
 using RforU.Models;
-using System.Collections.Generic;
 
 #endregion
 
@@ -15,9 +15,9 @@ namespace RforU.Services
     internal class GameService : IGameService
     {
         private readonly IActiveGameRepository _activeGameRepository;
+        private readonly IMoveRepository _moveRepository;
         private readonly IOnlinePlayerRepository _onlinePlayerRepository;
         private readonly IStagedGameRepository _stagedGameRepository;
-        private readonly IMoveRepository _moveRepository;
 
         public GameService(
             IActiveGameRepository activeGameRepository,

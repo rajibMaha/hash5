@@ -24,9 +24,6 @@ namespace GameManager.API
             service.AddScoped<IStagedGameRepository, StagedGameRepository>();
 
             //transit 
-
-
-
         }
     }
 }

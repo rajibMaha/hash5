@@ -1,9 +1,9 @@
 ﻿#region
 
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RforU.Interfaces;
-using System;
 
 #endregion
 
@@ -16,6 +16,7 @@ namespace RforU.Models
         public bool Online { get; set; }
         public bool Available { get; set; }
         public DateTime OnlineSince { get; set; }
+
         [JsonConverter(typeof(StringEnumConverter))]
         public string TypeOfPlayer { get; set; }
 

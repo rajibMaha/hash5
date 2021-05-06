@@ -23,9 +23,6 @@ namespace RforU.Manager.API
             service.AddScoped<IApiManagerControllerService, ApiManagerControllerService>();
 
             //transit 
-
-
-
         }
     }
 }

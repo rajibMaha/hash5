@@ -1,13 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using RforU.Manager.API.Interfaces;
 using RforU.Manager.API.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RforU.Manager.API.Services
 {
@@ -15,46 +15,36 @@ namespace RforU.Manager.API.Services
     {
         private readonly WorkflowProxies _workflowProxies;
 
+        private RestClient client;
+        private RestClient OAuthClient;
+
         public ApiManagerControllerService(IConfiguration config)
         {
             _workflowProxies = config.Get<WorkflowProxies>();
-
         }
+
         public async Task HandleEvents(JObject eventData, string eventType)
         {
-
-            IEnumerable<WorkflowProxy> workflowProxies = _workflowProxies.routes.Where(r => string.Equals(r.eventType, eventType));
+            var workflowProxies = _workflowProxies.routes.Where(r => string.Equals(r.eventType, eventType));
             await SentEvents(workflowProxies, eventData);
         }
 
         private async Task SentEvents(IEnumerable<WorkflowProxy> workflowProxies, JObject eventData)
         {
-            foreach (var workflowProxy in workflowProxies)
-            {
-                WorkWorkflowProxy(workflowProxy, eventData);
-
-            }
+            foreach (var workflowProxy in workflowProxies) WorkWorkflowProxy(workflowProxy, eventData);
         }
 
         private async Task WorkWorkflowProxy(WorkflowProxy workflowProxy, JObject eventData)
         {
-
-
             foreach (var dispatchRoute in workflowProxy.dispatchRoutes)
-            {
                 await workDispatchRoute(dispatchRoute, eventData);
-
-            }
-
-
         }
 
-        RestClient client = null;
         private async Task<IRestResponse> workDispatchRoute(DispatchRoute dispatchRoute, JObject payload)
         {
             IRestResponse responce = null;
             client = client ?? new RestClient(_workflowProxies.OAuthEndpoint);
-            Method method = Method.GET;
+            var method = Method.GET;
             switch (dispatchRoute.Method)
             {
                 case "POST":
@@ -63,13 +53,11 @@ namespace RforU.Manager.API.Services
                 case "GET":
                     method = Method.GET;
                     break;
-                default:
-                    break;
             }
 
-            RestRequest request = new RestRequest(method);
+            var request = new RestRequest(method);
 
-            string bearerToken = await getBearerToken();
+            var bearerToken = await getBearerToken();
             request.AddHeader("authorization", bearerToken);
 
             request.AddHeader("cache-controller", "no-cache");
@@ -83,23 +71,19 @@ namespace RforU.Manager.API.Services
                 client.ExecuteAsync(request);
                 return await Task.FromResult<IRestResponse>(null);
             }
-            else
-            {
-                responce = await client.ExecuteAsync(request);
-            }
+
+            responce = await client.ExecuteAsync(request);
 
             return responce;
-
-
         }
-        RestClient OAuthClient = null;
+
         private async Task<string> getBearerToken()
         {
             OAuthClient = OAuthClient ?? new RestClient(_workflowProxies.OAuthEndpoint);
-            string clientID = Environment.GetEnvironmentVariable("clientID", EnvironmentVariableTarget.Process);
-            string clientSecret = Environment.GetEnvironmentVariable("clientSecret", EnvironmentVariableTarget.Process);
+            var clientID = Environment.GetEnvironmentVariable("clientID", EnvironmentVariableTarget.Process);
+            var clientSecret = Environment.GetEnvironmentVariable("clientSecret", EnvironmentVariableTarget.Process);
 
-            RestRequest request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddHeader("Accept", "application/json");
             request.AddParameter("grant_type", "client_credentials");
@@ -108,13 +92,11 @@ namespace RforU.Manager.API.Services
             request.AddParameter("client_serect", clientSecret);
 
 
-            IRestResponse responce = await OAuthClient.ExecuteAsync(request);
+            var responce = await OAuthClient.ExecuteAsync(request);
             dynamic resp = JObject.Parse(responce.Content);
             var token = resp.access_token;
 
             return $"Bearer {token}";
-
-
         }
     }
 }

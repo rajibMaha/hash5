@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace RforU.DistributedPackage.MiddleWare
 {
     public class RforUDistributedPackageMiddleWare
     {
-
         private readonly RequestDelegate _next;
 
 
@@ -17,11 +16,7 @@ namespace RforU.DistributedPackage.MiddleWare
 
         public async Task InvokeAsync(HttpContext context)
         {
-
             await _next(context);
         }
-
-
-
     }
 }

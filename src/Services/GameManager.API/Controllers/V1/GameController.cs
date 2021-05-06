@@ -1,11 +1,11 @@
 ﻿#region
 
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RforU.DistributedPackage.Exception;
 using RforU.GameManager.API.Interfaces;
-using System;
-using System.Threading.Tasks;
 
 #endregion
 
@@ -31,7 +31,6 @@ namespace RforU.GameManager.API.Controllers
         {
             try
             {
-
                 var initData = await _gameControllerService.GetInitialData(userId);
                 return Ok(initData);
             }
@@ -52,11 +51,9 @@ namespace RforU.GameManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<bool>> GameSubmitted([FromBody] IGame gameDetails)
         {
-
             try
             {
-
-                bool initData = await _gameControllerService.GameSubmitted(gameDetails);
+                var initData = await _gameControllerService.GameSubmitted(gameDetails);
                 return Ok(initData);
             }
             catch (Exception ex)
@@ -67,8 +64,6 @@ namespace RforU.GameManager.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     RforUErrorCodes.GetError(ErrorType.Application));
             }
-
-
         }
 
         [HttpPut]
@@ -77,11 +72,9 @@ namespace RforU.GameManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<bool>> OnlineStatusUpdate([FromBody] IGame gameDetails)
         {
-
             try
             {
-
-                bool initData = await _gameControllerService.GameSubmitted(gameDetails);
+                var initData = await _gameControllerService.GameSubmitted(gameDetails);
                 return Ok(initData);
             }
             catch (Exception ex)
@@ -92,9 +85,6 @@ namespace RforU.GameManager.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     RforUErrorCodes.GetError(ErrorType.Application));
             }
-
-
         }
-
     }
 }

@@ -1,9 +1,9 @@
 ﻿#region
 
-using RforU.PlayerManager.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using RforU.PlayerManager.API.Interfaces;
 
 #endregion
 
@@ -23,7 +23,7 @@ namespace RforU.PlayerManager.API.Services
         }
 
         /// <summary>
-        /// return the list of Online player and 
+        ///     return the list of Online player and
         /// </summary>
         /// <param name="userId"> ID of user</param>
         /// <returns></returns>
@@ -53,9 +53,10 @@ namespace RforU.PlayerManager.API.Services
             var onlinePlayer = await _onlinePlayerRepository.GetOnlinePlayers();
             return onlinePlayer;
         }
+
         public async Task<IPlayer> GetPlayer(string userId)
         {
-            IPlayer player = await _onlinePlayerRepository.GetPlayer(userId);
+            var player = await _onlinePlayerRepository.GetPlayer(userId);
             return player;
         }
     }

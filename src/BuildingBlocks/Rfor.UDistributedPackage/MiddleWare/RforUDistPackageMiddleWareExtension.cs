@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+
 //using RforU.DistributedPackage.Configuration.AppConfig;
 
 //swagger use swaggerBucket.aspnet > donot use swaggerBucket.aspnet.swagger 
@@ -11,22 +12,25 @@ namespace RforU.DistributedPackage.MiddleWare
     {
         //UseRforUCommonMiddleWare 
         // private static IHelpers _helpers;
-        public static IApplicationBuilder UseRforUDistPackageMiddleWare(this IApplicationBuilder app, Action<RforUDistributedPackageOptions> optionsAction)
+        public static IApplicationBuilder UseRforUDistPackageMiddleWare(this IApplicationBuilder app,
+            Action<RforUDistributedPackageOptions> optionsAction)
         {
             #region Get Option Values
-            RforUDistributedPackageOptions option = new RforUDistributedPackageOptions();
+
+            var option = new RforUDistributedPackageOptions();
             if (optionsAction != null)
                 optionsAction.Invoke(option);
             RforUDistributedPackageSetting.Option = option;
+
             #endregion
 
             app.UseSwagger().UseSwaggerUI(c =>
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", option.AppName ?? DistPackageConstants.PackageName)
-           );
+            );
 
             return app.UseMiddleware<RforUDistributedPackageMiddleWare>();
-
         }
+
         public static IServiceCollection AddRforUDistPackageMiddleWare(this IServiceCollection service)
         {
             service.AddSwaggerGen();
@@ -48,10 +52,5 @@ namespace RforU.DistributedPackage.MiddleWare
         //    RegisterService.Register(ref service);
         //    return service;
         //}
-
-
-
     }
-
-
 }

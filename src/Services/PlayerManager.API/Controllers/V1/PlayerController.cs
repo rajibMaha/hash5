@@ -1,13 +1,13 @@
 ﻿#region
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RforU.DistributedPackage.Exception;
 using RforU.PlayerManager.API.Interfaces;
 using RforU.PlayerManager.API.Models;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 #endregion
 
@@ -33,7 +33,7 @@ namespace RforU.PlayerManager.API.Controllers.V1
         {
             try
             {
-                IPlayer player = await _playerControllerService.GetPlayer(playerId);
+                var player = await _playerControllerService.GetPlayer(playerId);
                 return Ok(player);
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace RforU.PlayerManager.API.Controllers.V1
         {
             try
             {
-                List<IPlayer> player = await _playerControllerService.GetInitialData(playerId);
+                var player = await _playerControllerService.GetInitialData(playerId);
                 return Ok(player);
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace RforU.PlayerManager.API.Controllers.V1
         {
             try
             {
-                List<IPlayer> player = await _playerControllerService.GetOnlinePlayer();
+                var player = await _playerControllerService.GetOnlinePlayer();
                 return Ok(player);
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace RforU.PlayerManager.API.Controllers.V1
         {
             try
             {
-                bool initData = await _playerControllerService.AddCurrent(user);
+                var initData = await _playerControllerService.AddCurrent(user);
                 return Ok(initData);
             }
             catch (Exception ex)
@@ -108,7 +108,5 @@ namespace RforU.PlayerManager.API.Controllers.V1
                     RforUErrorCodes.GetError(ErrorType.Application));
             }
         }
-
-
     }
 }

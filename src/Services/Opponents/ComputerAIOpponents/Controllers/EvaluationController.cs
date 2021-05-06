@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace ComputerAIOpponents.Controllers
 {
@@ -17,6 +17,5 @@ namespace ComputerAIOpponents.Controllers
             //do logic here then return the winnerId 
             return Ok("winnerId");
         }
-
     }
 }

@@ -3,6 +3,5 @@
     public interface IGameDetails
     {
         IGame CurrentGame { get; set; }
-
     }
 }

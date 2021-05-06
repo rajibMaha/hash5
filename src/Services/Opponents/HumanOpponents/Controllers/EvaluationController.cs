@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace HumanOpponents.Controllers
 {
@@ -34,8 +34,6 @@ namespace HumanOpponents.Controllers
 
             return new MoveResult();
         }
-
-
     }
 
     public class MoveResult

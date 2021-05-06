@@ -6,7 +6,7 @@ namespace RforU.PlayerManager.API.Interfaces
     public interface IPlayerControllerService
     {
         /// <summary>
-        /// return the list of Online player and 
+        ///     return the list of Online player and
         /// </summary>
         /// <param name="userId"> ID of user</param>
         /// <returns></returns>

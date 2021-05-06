@@ -7,7 +7,6 @@ namespace Hash5.Tests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

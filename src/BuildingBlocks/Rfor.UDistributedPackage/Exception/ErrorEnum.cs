@@ -1,5 +1,4 @@
-﻿
-namespace RforU.DistributedPackage.Exception
+﻿namespace RforU.DistributedPackage.Exception
 {
     public enum ErrorType
     {
@@ -8,7 +7,6 @@ namespace RforU.DistributedPackage.Exception
         Connectivity,
         BadRequest,
         Forbidden,
-        RequestTimeOut,
-
+        RequestTimeOut
     }
 }

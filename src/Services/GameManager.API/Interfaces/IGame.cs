@@ -18,8 +18,8 @@ namespace RforU.GameManager.API.Interfaces
         //below can be of type Move but nosql azure storage table are not great with rational data
         [JsonPropertyName("9245fe4a-d402-451c-b9ed-9c1a04247482")]
         string PrimaryPlayerMove { get; set; }
-        string OpponentMove { get; set; }
 
+        string OpponentMove { get; set; }
 
 
         void InitGame();

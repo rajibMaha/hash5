@@ -10,7 +10,5 @@
         public string PatientID { get; set; }
 
         public string RefID { get; set; }
-
-
     }
 }

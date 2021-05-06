@@ -1,11 +1,10 @@
 ﻿#region
 
-using RforU.Interfaces;
-using RforU.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using RforU.Interfaces;
+using RforU.Models;
 
 #endregion
 
@@ -23,7 +22,6 @@ namespace RforU.Services
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository,
             IStagedGameRepository stagedGameRepository
-
         )
         {
             _activeGameRepository = activeGameRepository;
@@ -32,7 +30,7 @@ namespace RforU.Services
         }
 
         /// <summary>
-        /// return the list of Online player and 
+        ///     return the list of Online player and
         /// </summary>
         /// <param name="userId"> ID of user</param>
         /// <returns></returns>
@@ -42,12 +40,11 @@ namespace RforU.Services
             var activeGames = await GetActiveGames(playerId);
             var stagedGames = await GeStagedGames(playerId);
 
-            var initData = new GameData()
+            var initData = new GameData
             {
                 OnlinePlayers = onlinePlayer,
                 ActiveGames = activeGames,
                 StagedGames = stagedGames
-
             };
             return initData;
         }
@@ -64,36 +61,31 @@ namespace RforU.Services
             {
                 return false;
             }
-
-
         }
 
         public async Task<IPlayer> GetPlayer(string userId)
         {
-            IPlayer player = await _onlinePlayerRepository.GetPlayer(userId);
+            var player = await _onlinePlayerRepository.GetPlayer(userId);
             return player;
         }
 
         public Task<bool> RegisterMove(GameDetails gameDetails)
         {
-
             // rised   "RforU.Events.Player.Join", event 
             //if (gameDetails == null || gameDetails.CurrentGame == null) { return Task.FromResult<bool>(false); }
 
-            return Task.FromResult<bool>(false);
-
+            return Task.FromResult(false);
         }
 
 
-        internal  Task<List<IGame>> GetActiveGames(string playerId)
+        internal Task<List<IGame>> GetActiveGames(string playerId)
         {
-
-           // calls Manage.API , Manager API calls Game API and get data , 
+            // calls Manage.API , Manager API calls Game API and get data , 
 
             //var activeGame = await _activeGameRepository.GetActiveGames(playerId);
             //// can not hack developer tool to see the OpponentMove  value 
             //return activeGame.Where(g => string.IsNullOrEmpty(g.OpponentMove)).ToList();
-            return Task.FromResult<List<IGame>>(new List<IGame>());
+            return Task.FromResult(new List<IGame>());
         }
 
 

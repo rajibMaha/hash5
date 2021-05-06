@@ -29,8 +29,6 @@ namespace RforU
             //transit 
             service.AddTransient<IGameControllerService, GameControllerService>();
             service.AddTransient<IGameService, GameService>();
-
-
         }
     }
 }

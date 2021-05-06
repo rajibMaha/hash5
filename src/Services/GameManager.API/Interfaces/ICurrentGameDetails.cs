@@ -3,6 +3,5 @@
     internal interface ICurrentGameDetails
     {
         IGame CurrentGame { get; set; }
-
     }
 }

@@ -1,0 +1,16 @@
+h
+_C:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Controllers\V1\PlayerController.csutf-8q
+hC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Controllers\V1\WeatherForecastController.csutf-8k
+bC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Interfaces\IOnlinePlayerRepository.csutf-8[
+RC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Interfaces\IPlayer.csutf-8l
+cC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Interfaces\IPlayerControllerService.csutf-8V
+MC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Models\Player.csutf-8P
+GC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Program.csutf-8Z
+QC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\RegisterDIService.csutf-8l
+cC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Repositories\OnlinePlayerRepository.csutf-8i
+`C:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Services\PlayerControllerService.csutf-8P
+GC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\Startup.csutf-8X
+OC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\WeatherForecast.csutf-8è
+ÉC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8Å
+vC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\obj\Debug\netcoreapp3.1\PlayerManager.API.AssemblyInfo.csutf-8ï
+âC:\00PrLnScr\interview\Edge10\src\Services\PlayerManager.API\obj\Debug\netcoreapp3.1\PlayerManager.API.MvcApplicationPartsAssemblyInfo.csutf-8

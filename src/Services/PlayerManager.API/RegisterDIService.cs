@@ -23,8 +23,6 @@ namespace RforU.PlayerManager.API
             service.AddScoped<IOnlinePlayerRepository, OnlinePlayerRepository>();
             //transit 
             service.AddTransient<IPlayerControllerService, PlayerControllerService>();
-
-
         }
     }
 }

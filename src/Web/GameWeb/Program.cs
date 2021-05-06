@@ -26,8 +26,6 @@ namespace RforU
                         config.AddEnvironmentVariables()
                             .AddJsonFile("WorkflowProxy.json", true, false);
                     });
-
-
                 });
         }
     }

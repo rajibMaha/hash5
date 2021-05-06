@@ -1,11 +1,11 @@
 ﻿#region
 
-using RforU.DistributedPackage.Repositories;
-using RforU.GameManager.API.Interfaces;
-using RforU.GameManager.API.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RforU.DistributedPackage.Repositories;
+using RforU.GameManager.API.Interfaces;
+using RforU.GameManager.API.Models;
 
 #endregion
 
@@ -13,26 +13,25 @@ namespace RforU.GameManager.API.Repositories
 {
     public class ActiveGameRepository : CloudStorageTableRepository<List<IGame>>, IActiveGameRepository
     {
-
-
         //TODO: query Azure Storage "OnlineGames" Table
         public Task<List<IGame>> GetActiveGames(string PlayerId)
         {
             // this will goes in storage Table TableQuery
             var userActivedGame =
-                DummyActiveGameData.ActiveGame.Where(g => g.OpponentId == PlayerId || g.PrimaryPlayerId == PlayerId).ToList();
-            return Task.FromResult<List<IGame>>(userActivedGame);
+                DummyActiveGameData.ActiveGame.Where(g => g.OpponentId == PlayerId || g.PrimaryPlayerId == PlayerId)
+                    .ToList();
+            return Task.FromResult(userActivedGame);
         }
     }
 
 
-    static class DummyActiveGameData
+    internal static class DummyActiveGameData
     {
         public static List<IGame> ActiveGame = new List<IGame>
         {
             new Game
             {
-                GameId = "AAAA-01",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-01", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player1",
                 OpponentId = "",
                 PrimaryPlayerMove = "Rock",
@@ -40,14 +39,14 @@ namespace RforU.GameManager.API.Repositories
             },
             new Game
             {
-                GameId = "AAAA-02",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-02", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player2",
                 OpponentId = "Player100",
                 Active = true
             },
             new Game
             {
-                GameId = "AAAA-03",//Guid.NewGuid().ToString(),
+                GameId = "AAAA-03", //Guid.NewGuid().ToString(),
                 PrimaryPlayerId = "Player3",
                 OpponentId = "Player1",
                 PrimaryPlayerMove = "Paper",

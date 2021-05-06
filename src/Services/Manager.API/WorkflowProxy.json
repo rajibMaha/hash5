@@ -83,8 +83,6 @@
     },
 
     // game Evaluations
-
-
     {
       "eventType": "RforU.Events.Game.Human.Evaluate",
       "DispatchRoutes": [

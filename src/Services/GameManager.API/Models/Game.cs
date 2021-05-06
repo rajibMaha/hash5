@@ -1,7 +1,7 @@
 ﻿#region
 
-using RforU.GameManager.API.Interfaces;
 using System;
+using RforU.GameManager.API.Interfaces;
 
 #endregion
 
