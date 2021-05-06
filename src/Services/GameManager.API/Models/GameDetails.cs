@@ -10,7 +10,5 @@ namespace RforU.GameManager.API.Models
     {
 
         public IGame CurrentGame { get; set; }
-        public IPlayer PrimaryPlayer { get; set; }
-        public IPlayer Opponent { get; set; }
     }
 }

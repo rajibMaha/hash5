@@ -76,18 +76,24 @@ namespace RforU.Services
 
         public Task<bool> RegisterMove(GameDetails gameDetails)
         {
-            if (gameDetails == null || gameDetails.CurrentGame == null) { return Task.FromResult<bool>(false); }
+
+            // rised   "RforU.Events.Player.Join", event 
+            //if (gameDetails == null || gameDetails.CurrentGame == null) { return Task.FromResult<bool>(false); }
 
             return Task.FromResult<bool>(false);
 
         }
 
 
-        internal async Task<List<IGame>> GetActiveGames(string playerId)
+        internal  Task<List<IGame>> GetActiveGames(string playerId)
         {
-            var activeGame = await _activeGameRepository.GetActiveGames(playerId);
-            // can not hack developer tool to see the OpponentMove  value 
-            return activeGame.Where(g => string.IsNullOrEmpty(g.OpponentMove)).ToList();
+
+           // calls Manage.API , Manager API calls Game API and get data , 
+
+            //var activeGame = await _activeGameRepository.GetActiveGames(playerId);
+            //// can not hack developer tool to see the OpponentMove  value 
+            //return activeGame.Where(g => string.IsNullOrEmpty(g.OpponentMove)).ToList();
+            return Task.FromResult<List<IGame>>(new List<IGame>());
         }
 
 

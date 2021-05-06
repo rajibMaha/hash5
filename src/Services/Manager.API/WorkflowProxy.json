@@ -18,7 +18,13 @@
       "eventType": "RforU.Events.Player.SelectOpponent",
       "DispatchRoutes": [
         {
-          "URL": "{{PlayerMicroservices}}/api/v1/CleanUpStage", // protocol and URL will change
+          "URL": "{{PlayerMicroservices}}/api/v1/UpdateAcitve", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": false,
+          "data": "IGameDetails"
+        },
+        {
+          "URL": "{{GameMicroservices}}/api/v1/CleanUpStage", // protocol and URL will change
           "Method": "POST",
           "IsAsync": false,
           "data": "IGameDetails"
