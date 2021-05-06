@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using RforU.GameManager.API.Interfaces;
 
 namespace RforU.GameManager.API.Interfaces
 {

@@ -1,7 +1,6 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using RforU.GameManager.API.Models;
 
 #endregion
 
@@ -15,7 +14,7 @@ namespace RforU.GameManager.API.Interfaces
         Task<bool> OnlineStatusUpdate(IGame currentGame);
         Task<bool> UpdateGame(IGame currentGame);
         Task<bool> MoveToArchive(IGame currentGame);
-        
+
 
 
     }

@@ -1,11 +1,11 @@
 ﻿#region
 
+using RforU.Interfaces;
+using RforU.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RforU.Interfaces;
-using RforU.Models;
 
 #endregion
 
@@ -47,25 +47,25 @@ namespace RforU.Services
                 OnlinePlayers = onlinePlayer,
                 ActiveGames = activeGames,
                 StagedGames = stagedGames
-                
+
             };
             return initData;
         }
 
-        public async  Task<bool> AddCurrent(IPlayer user)
+        public async Task<bool> AddCurrent(IPlayer user)
         {
             try
             {
                 //TODO: Check if the  exist then update or insert  
-                await _onlinePlayerRepository.AddUpdateOnlinePlayers( user);
+                await _onlinePlayerRepository.AddUpdateOnlinePlayers(user);
                 return true;
             }
-            catch(Exception _ )
+            catch (Exception _)
             {
                 return false;
             }
 
-           
+
         }
 
         public async Task<IPlayer> GetPlayer(string userId)
@@ -76,7 +76,7 @@ namespace RforU.Services
 
         public Task<bool> RegisterMove(GameDetails gameDetails)
         {
-            if (gameDetails == null || gameDetails.CurrentGame == null) {return Task.FromResult<bool>(false);}
+            if (gameDetails == null || gameDetails.CurrentGame == null) { return Task.FromResult<bool>(false); }
 
             return Task.FromResult<bool>(false);
 

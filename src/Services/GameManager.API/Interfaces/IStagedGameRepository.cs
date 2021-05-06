@@ -1,9 +1,8 @@
 ﻿#region
 
+using RforU.DistributedPackage.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RforU.DistributedPackage.Interfaces;
-using RforU.DistributedPackage.Interfaces;
 
 #endregion
 

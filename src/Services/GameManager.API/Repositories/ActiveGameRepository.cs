@@ -1,12 +1,11 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using RforU.DistributedPackage.Repositories;
 using RforU.GameManager.API.Interfaces;
 using RforU.GameManager.API.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -15,7 +14,7 @@ namespace RforU.GameManager.API.Repositories
     public class ActiveGameRepository : CloudStorageTableRepository<List<IGame>>, IActiveGameRepository
     {
 
-       
+
         //TODO: query Azure Storage "OnlineGames" Table
         public Task<List<IGame>> GetActiveGames(string PlayerId)
         {
@@ -27,9 +26,9 @@ namespace RforU.GameManager.API.Repositories
     }
 
 
-     static class DummyActiveGameData
+    static class DummyActiveGameData
     {
-       public static List<IGame> ActiveGame = new List<IGame>
+        public static List<IGame> ActiveGame = new List<IGame>
         {
             new Game
             {

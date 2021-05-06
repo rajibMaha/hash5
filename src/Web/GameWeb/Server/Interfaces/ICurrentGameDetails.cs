@@ -1,6 +1,4 @@
-﻿using RforU.Interfaces;
-
-namespace RforU.Interfaces
+﻿namespace RforU.Interfaces
 {
     internal interface ICurrentGameDetails
     {

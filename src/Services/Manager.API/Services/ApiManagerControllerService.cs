@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using RforU.Manager.API.Interfaces;
 using RforU.Manager.API.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RforU.Manager.API.Services
 {
@@ -20,7 +20,7 @@ namespace RforU.Manager.API.Services
             _workflowProxies = config.Get<WorkflowProxies>();
 
         }
-        public async Task HandleEvents(JObject eventData , string eventType)
+        public async Task HandleEvents(JObject eventData, string eventType)
         {
 
             IEnumerable<WorkflowProxy> workflowProxies = _workflowProxies.routes.Where(r => string.Equals(r.eventType, eventType));
@@ -38,14 +38,14 @@ namespace RforU.Manager.API.Services
 
         private async Task WorkWorkflowProxy(WorkflowProxy workflowProxy, JObject eventData)
         {
-            
 
-                foreach (var dispatchRoute in workflowProxy.dispatchRoutes)
-                {
-                    await workDispatchRoute(dispatchRoute, eventData);
 
-                }
-           
+            foreach (var dispatchRoute in workflowProxy.dispatchRoutes)
+            {
+                await workDispatchRoute(dispatchRoute, eventData);
+
+            }
+
 
         }
 

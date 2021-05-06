@@ -1,13 +1,13 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RforU.DistributedPackage.Exception;
 using RforU.PlayerManager.API.Interfaces;
 using RforU.PlayerManager.API.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -109,6 +109,6 @@ namespace RforU.PlayerManager.API.Controllers.V1
             }
         }
 
-        
+
     }
 }

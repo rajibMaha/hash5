@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using RforU.Manager.API.Interfaces;
+using System.Threading.Tasks;
 
 namespace RforU.Manager.API.Controllers.V1
 {
@@ -21,7 +21,7 @@ namespace RforU.Manager.API.Controllers.V1
         [Route("HandleEvents")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<bool>> HandleEvents([FromBody] JObject payload , [FromQuery] string EventType)
+        public async Task<ActionResult<bool>> HandleEvents([FromBody] JObject payload, [FromQuery] string EventType)
         {
 
             await _apiManagerControllerService.HandleEvents(payload, EventType);

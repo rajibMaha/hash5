@@ -1,12 +1,12 @@
 ﻿#region
 
+using RforU.DistributedPackage.Repositories;
+using RforU.PlayerManager.API.Interfaces;
+using RforU.PlayerManager.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RforU.DistributedPackage.Repositories;
-using RforU.PlayerManager.API.Interfaces;
-using RforU.PlayerManager.API.Models;
 
 #endregion
 
@@ -25,7 +25,7 @@ namespace RforU.PlayerManager.API.Repositories
 
         public async Task<bool> AddUpdateOnlinePlayers(IPlayer player)
         {
-            await base.Add(new List<IPlayer> {player});
+            await base.Add(new List<IPlayer> { player });
             if (DummyOnlinePlayerData.OnlinePlayer.Any(p => p.PlayerId == player.PlayerId))
             {
                 _ = DummyOnlinePlayerData.OnlinePlayer.Where(p => p.PlayerId == player.PlayerId)

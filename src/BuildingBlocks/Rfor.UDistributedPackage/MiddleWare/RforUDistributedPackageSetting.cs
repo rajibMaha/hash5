@@ -2,14 +2,14 @@
 
 namespace RforU.DistributedPackage.MiddleWare
 {
-    internal  class RforUDistributedPackageSetting
+    internal class RforUDistributedPackageSetting
     {
 
         protected RforUDistributedPackageSetting()
         {
         }
 
-        internal static   RforUDistributedPackageOptions Option { get; set; }
+        internal static RforUDistributedPackageOptions Option { get; set; }
 
     }
 }

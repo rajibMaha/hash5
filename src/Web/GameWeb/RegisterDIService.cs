@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using RforU.Interfaces;
-using RforU.Models;
 using RforU.Repositories;
 using RforU.Services;
 
@@ -31,7 +30,7 @@ namespace RforU
             service.AddTransient<IGameControllerService, GameControllerService>();
             service.AddTransient<IGameService, GameService>();
 
-          
+
         }
     }
 }

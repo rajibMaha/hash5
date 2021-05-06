@@ -1,9 +1,9 @@
 ﻿#region
 
-using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RforU.PlayerManager.API.Interfaces;
+using System;
 
 #endregion
 

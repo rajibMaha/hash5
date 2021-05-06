@@ -10,26 +10,26 @@ namespace Common.Events
 {
     public interface IEventHubCoustomEventService
     {
-        void createPayload(dynamic data, ref List<CloudEvent> payload, string eventType , string subject = "DefaultEventSubject");
-        void PublishEventAsync(List<CloudEvent> payload, string topic ="DefalutTopic");
+        void createPayload(dynamic data, ref List<CloudEvent> payload, string eventType, string subject = "DefaultEventSubject");
+        void PublishEventAsync(List<CloudEvent> payload, string topic = "DefalutTopic");
     }
 
     public class EventHubCustomEventService : IEventHubCoustomEventService
     {
-    
+
         private readonly string _eventHubDomainUrl;
         private readonly string _eventHubAccesskey;
 
         public EventHubCustomEventService(IConfiguration config)
         {
-           
-            _eventHubDomainUrl = config.GetSection("EventHubDomainUrl").Value.ToString(); 
-            
+
+            _eventHubDomainUrl = config.GetSection("EventHubDomainUrl").Value.ToString();
+
             _eventHubDomainUrl = config.GetSection("EventHubDomainUrl").Value.ToString();
             _eventHubAccesskey = config["EventHubAccesskey"];
         }
 
-        public void createPayload(dynamic data, ref List<CloudEvent> payload, string eventType , string subject = "DefaultEventSubject")
+        public void createPayload(dynamic data, ref List<CloudEvent> payload, string eventType, string subject = "DefaultEventSubject")
         {
             payload ??= new List<CloudEvent>();
             CloudEvent cloudEvent = new CloudEvent(
@@ -43,7 +43,7 @@ namespace Common.Events
             payload.Add(cloudEvent);
         }
 
-        public void PublishEventAsync(List<CloudEvent> payload, string topic ="DefalutTopic")
+        public void PublishEventAsync(List<CloudEvent> payload, string topic = "DefalutTopic")
         {
             EventGridPublisherClient client = new EventGridPublisherClient(
                 new Uri($"{_eventHubDomainUrl}/{topic}"),

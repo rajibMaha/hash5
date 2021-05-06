@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace RforU.GameManager.API.Interfaces
 {
@@ -21,7 +20,7 @@ namespace RforU.GameManager.API.Interfaces
         string PrimaryPlayerMove { get; set; }
         string OpponentMove { get; set; }
 
-        
+
 
         void InitGame();
     }

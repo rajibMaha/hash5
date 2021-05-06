@@ -1,12 +1,11 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using RforU.DistributedPackage.Repositories;
 using RforU.GameManager.API.Interfaces;
 using RforU.GameManager.API.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -15,7 +14,7 @@ namespace RforU.GameManager.API.Repositories
     public class StagedGameRepository : CloudStorageTableRepository<List<IGame>>, IStagedGameRepository
     {
         //TODO: query Azure Storage "OnlineGames" Table
-       
+
         public Task<List<IGame>> GetStagedGames(string playerId)
         {
             // this will goes in storage Table TableQuery
@@ -28,7 +27,7 @@ namespace RforU.GameManager.API.Repositories
 
     static class DummyStagedGameData
     {
-        public static List<IGame>  StagedGame = new List<IGame>
+        public static List<IGame> StagedGame = new List<IGame>
         {
             new Game
             {

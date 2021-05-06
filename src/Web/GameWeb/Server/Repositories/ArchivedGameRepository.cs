@@ -1,12 +1,12 @@
 ﻿#region
 
+using RforU.DistributedPackage.Repositories;
+using RforU.Interfaces;
+using RforU.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RforU.DistributedPackage.Repositories;
-using RforU.Interfaces;
-using RforU.Models;
 
 #endregion
 

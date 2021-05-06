@@ -6,7 +6,7 @@ namespace RforU.DistributedPackage
 
         public const string RforU_Events_Player_Join = "RforU.Events.Player.Join";
         public const string RforU_Events_Player_SelectOpponent = "RforU.Events.Player.SelectOpponent";
-        
+
         public const string RforU_Events_Game_Created = "RforU.Events.Game.Created";
         public const string RforU_Events_Game_Submited = "RforU.Events.Game.Submitted";
 

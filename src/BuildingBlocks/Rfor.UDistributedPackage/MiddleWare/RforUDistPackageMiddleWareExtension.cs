@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 //using RforU.DistributedPackage.Configuration.AppConfig;
 
 //swagger use swaggerBucket.aspnet > donot use swaggerBucket.aspnet.swagger 
@@ -18,7 +17,7 @@ namespace RforU.DistributedPackage.MiddleWare
             RforUDistributedPackageOptions option = new RforUDistributedPackageOptions();
             if (optionsAction != null)
                 optionsAction.Invoke(option);
-            RforUDistributedPackageSetting.Option = option; 
+            RforUDistributedPackageSetting.Option = option;
             #endregion
 
             app.UseSwagger().UseSwaggerUI(c =>

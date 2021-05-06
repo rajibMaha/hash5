@@ -1,12 +1,11 @@
 ﻿#region
 
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RforU.DistributedPackage.Exception;
 using RforU.GameManager.API.Interfaces;
-using RforU.GameManager.API.Models;
+using System;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -46,7 +45,7 @@ namespace RforU.GameManager.API.Controllers
             }
         }
 
-       
+
         [HttpPost]
         [Route("GameSubmitted")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IGameData))]

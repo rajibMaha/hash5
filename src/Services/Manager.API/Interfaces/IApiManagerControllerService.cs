@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace RforU.Manager.API.Interfaces
 {
     public interface IApiManagerControllerService
     {
-        Task HandleEvents(JObject eventData ,string eventType);
+        Task HandleEvents(JObject eventData, string eventType);
     }
 }

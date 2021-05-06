@@ -1,13 +1,12 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Azure.Messaging;
 using Common.Events;
 using RforU.GameManager.API.Interfaces;
 using RforU.GameManager.API.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -41,16 +40,16 @@ namespace GameManager.API.Services
         /// <returns></returns>
         public async Task<IGameData> GetInitialData(string playerId)
         {
-           
+
             var activeGames = await GetActiveGames(playerId);
             var stagedGames = await GeStagedGames(playerId);
 
             var initData = new GameData()
             {
-              
+
                 ActiveGames = activeGames,
                 StagedGames = stagedGames
-                
+
             };
             return initData;
         }
@@ -62,7 +61,7 @@ namespace GameManager.API.Services
             List<CloudEvent> eventpayload = new List<CloudEvent>();
             _eventHubCoustomEventService.createPayload(gameDetails, ref eventpayload, "RforU.Events.Game.Submitted");
             _eventHubCoustomEventService.PublishEventAsync(eventpayload, "EventGridTopicManagement");
-         
+
 
             return Task.FromResult<bool>(false);
 

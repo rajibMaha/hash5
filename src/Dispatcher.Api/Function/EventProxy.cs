@@ -1,4 +1,3 @@
-using EventProxy.Model;
 using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
@@ -8,8 +7,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RforU
@@ -17,7 +14,7 @@ namespace RforU
     public class Dispatcher
     {
         private readonly IConfiguration _config;
-      
+
 
         // azure recently added initialization of functions 
         private string ApiManagerUrl;
@@ -27,7 +24,7 @@ namespace RforU
             _config = config;
             var ApiManagerUrl = System.Environment.GetEnvironmentVariable("ApiManagerUrl", EnvironmentVariableTarget.Process);
             var OAuthEndpoint = System.Environment.GetEnvironmentVariable("OAuthEndpoint", EnvironmentVariableTarget.Process);
-            
+
 
 
         }
@@ -36,7 +33,7 @@ namespace RforU
         {
             log.LogInformation(eventGridEvent.Data.ToString());
 
-            
+
             var jobjectData = eventGridEvent.Data as JObject;
 
             await workDispatchRoute(jobjectData, eventGridEvent.EventType);
@@ -48,8 +45,8 @@ namespace RforU
         private async Task<IRestResponse> workDispatchRoute(JObject payload, string EventType)
         {
             IRestResponse response = null;
-          
-            
+
+
             client ??= new RestClient(ApiManagerUrl);
             RestRequest request = new RestRequest(Method.POST);
 
@@ -62,10 +59,10 @@ namespace RforU
 
             var datastr = JsonConvert.SerializeObject(payload);
             request.AddJsonBody(datastr);
-          
-                
-               var  responce = await client.ExecuteAsync(request);
-            
+
+
+            var responce = await client.ExecuteAsync(request);
+
 
             return responce;
 
@@ -74,7 +71,7 @@ namespace RforU
         RestClient OAuthClient = null;
         private async Task<string> getBearerToken()
         {
-            OAuthClient??=  new RestClient(OAuthEndpoint);
+            OAuthClient ??= new RestClient(OAuthEndpoint);
             string clientID = Environment.GetEnvironmentVariable("clientID", EnvironmentVariableTarget.Process);
             string clientSecret = Environment.GetEnvironmentVariable("clientSecret", EnvironmentVariableTarget.Process);
 

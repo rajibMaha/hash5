@@ -1,9 +1,9 @@
 ﻿#region
 
+using RforU.PlayerManager.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RforU.PlayerManager.API.Interfaces;
 
 #endregion
 
@@ -16,7 +16,7 @@ namespace RforU.PlayerManager.API.Services
 
         //TODO: move all this code to service Game service is only entity that will talk to Repository
         public PlayerControllerService(
-            IOnlinePlayerRepository onlinePlayerRepository 
+            IOnlinePlayerRepository onlinePlayerRepository
         )
         {
             _onlinePlayerRepository = onlinePlayerRepository;
