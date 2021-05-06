@@ -1,5 +1,4 @@
-﻿
-namespace RforU.DistributedPackage.MiddleWare
+﻿namespace RforU.DistributedPackage.MiddleWare
 {
     public class RforUDistributedPackageOptions
     {

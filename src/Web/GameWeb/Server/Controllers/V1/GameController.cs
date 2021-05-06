@@ -32,7 +32,6 @@ namespace RforU.Controllers
         {
             try
             {
-
                 var initData = await _gameControllerService.GetInitialData(userId);
                 return Ok(initData);
             }
@@ -54,8 +53,7 @@ namespace RforU.Controllers
         {
             try
             {
-
-                IPlayer player = await _gameControllerService.GetPlayer(playerId);
+                var player = await _gameControllerService.GetPlayer(playerId);
                 return Ok(player);
             }
             catch (Exception ex)
@@ -75,11 +73,9 @@ namespace RforU.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<bool>> AddCurrent([FromBody] Player user)
         {
-
             try
             {
-
-                bool initData = await _gameControllerService.AddCurrent(user);
+                var initData = await _gameControllerService.AddCurrent(user);
                 return Ok(initData);
             }
             catch (Exception ex)
@@ -90,8 +86,6 @@ namespace RforU.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     RforUErrorCodes.GetError(ErrorType.Application));
             }
-
-
         }
 
         [HttpPost]
@@ -100,11 +94,9 @@ namespace RforU.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<bool>> RegisterMover([FromBody] GameDetails gameDetails)
         {
-
             try
             {
-
-                bool initData = await _gameControllerService.RegisterMove(gameDetails);
+                var initData = await _gameControllerService.RegisterMove(gameDetails);
                 return Ok(initData);
             }
             catch (Exception ex)
@@ -115,8 +107,6 @@ namespace RforU.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     RforUErrorCodes.GetError(ErrorType.Application));
             }
-
-
         }
     }
 }

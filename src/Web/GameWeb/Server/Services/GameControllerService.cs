@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using RforU.Interfaces;
 using RforU.Models;
@@ -23,7 +22,6 @@ namespace RforU.Services
             IActiveGameRepository activeGameRepository,
             IOnlinePlayerRepository onlinePlayerRepository,
             IStagedGameRepository stagedGameRepository
-
         )
         {
             _activeGameRepository = activeGameRepository;
@@ -32,7 +30,7 @@ namespace RforU.Services
         }
 
         /// <summary>
-        /// return the list of Online player and 
+        ///     return the list of Online player and
         /// </summary>
         /// <param name="userId"> ID of user</param>
         /// <returns></returns>
@@ -42,52 +40,52 @@ namespace RforU.Services
             var activeGames = await GetActiveGames(playerId);
             var stagedGames = await GeStagedGames(playerId);
 
-            var initData = new GameData()
+            var initData = new GameData
             {
                 OnlinePlayers = onlinePlayer,
                 ActiveGames = activeGames,
                 StagedGames = stagedGames
-                
             };
             return initData;
         }
 
-        public async  Task<bool> AddCurrent(IPlayer user)
+        public async Task<bool> AddCurrent(IPlayer user)
         {
             try
             {
                 //TODO: Check if the  exist then update or insert  
-                await _onlinePlayerRepository.AddUpdateOnlinePlayers( user);
+                await _onlinePlayerRepository.AddUpdateOnlinePlayers(user);
                 return true;
             }
-            catch(Exception _ )
+            catch (Exception _)
             {
                 return false;
             }
-
-           
         }
 
         public async Task<IPlayer> GetPlayer(string userId)
         {
-            IPlayer player = await _onlinePlayerRepository.GetPlayer(userId);
+            var player = await _onlinePlayerRepository.GetPlayer(userId);
             return player;
         }
 
         public Task<bool> RegisterMove(GameDetails gameDetails)
         {
-            if (gameDetails == null || gameDetails.CurrentGame == null) {return Task.FromResult<bool>(false);}
+            // rised   "RforU.Events.Player.Join", event 
+            //if (gameDetails == null || gameDetails.CurrentGame == null) { return Task.FromResult<bool>(false); }
 
-            return Task.FromResult<bool>(false);
-
+            return Task.FromResult(false);
         }
 
 
-        internal async Task<List<IGame>> GetActiveGames(string playerId)
+        internal Task<List<IGame>> GetActiveGames(string playerId)
         {
-            var activeGame = await _activeGameRepository.GetActiveGames(playerId);
-            // can not hack developer tool to see the OpponentMove  value 
-            return activeGame.Where(g => string.IsNullOrEmpty(g.OpponentMove)).ToList();
+            // calls Manage.API , Manager API calls Game API and get data , 
+
+            //var activeGame = await _activeGameRepository.GetActiveGames(playerId);
+            //// can not hack developer tool to see the OpponentMove  value 
+            //return activeGame.Where(g => string.IsNullOrEmpty(g.OpponentMove)).ToList();
+            return Task.FromResult(new List<IGame>());
         }
 
 

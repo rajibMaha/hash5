@@ -5,7 +5,6 @@ namespace RforU.DistributedPackage.MiddleWare
 {
     public class RforUDistributedPackageMiddleWare
     {
-
         private readonly RequestDelegate _next;
 
 
@@ -17,11 +16,7 @@ namespace RforU.DistributedPackage.MiddleWare
 
         public async Task InvokeAsync(HttpContext context)
         {
-
             await _next(context);
         }
-
-
-
     }
 }

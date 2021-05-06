@@ -16,6 +16,7 @@ namespace RforU.Models
         public bool Online { get; set; }
         public bool Available { get; set; }
         public DateTime OnlineSince { get; set; }
+
         [JsonConverter(typeof(StringEnumConverter))]
         public string TypeOfPlayer { get; set; }
 

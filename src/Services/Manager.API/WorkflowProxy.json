@@ -1,0 +1,131 @@
+{
+  "BaseUrl": "string",
+  "OAuthEndpoint": "string",
+
+  "routes": [
+    {
+      "eventType": "RforU.Events.Player.Join",
+      "DispatchRoutes": [
+        {
+          "URL": "{{PlayerMicroservices}}/api/v1/AddCurrent", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": false,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Player.SelectOpponent",
+      "DispatchRoutes": [
+        {
+          "URL": "{{PlayerMicroservices}}/api/v1/UpdateAcitve", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": false,
+          "data": "IGameDetails"
+        },
+        {
+          "URL": "{{GameMicroservices}}/api/v1/CleanUpStage", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": false,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Created",
+      "DispatchRoutes": [
+        {
+          "URL": "{{GameMicroservices}}/api/v1/OnlineStatusUpdate", // protocol and URL will change
+          "Method": "PUT",
+          "IsAsync": false,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Submitted",
+      "DispatchRoutes": [
+        {
+          "URL": "{{GameMicroservices}}/api/v1/GameSubmitted", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": false,
+          "data": "IGame"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Completed",
+      "DispatchRoutes": [
+        {
+          "URL": "{{GameMicroservices}}/api/v1/UpdateGame", // protocol and URL will change
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Match.End",
+      "DispatchRoutes": [
+        {
+          "URL": "{{UserMicroservices}}/api/v1/MatchEnd", // protocol and URL will change
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        },
+        {
+          "URL": "{{GameMicroservices}}/api/v1/MoveToArchive", // protocol and URL will change
+          "Method": "POST",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+
+    // game Evaluations
+    {
+      "eventType": "RforU.Events.Game.Human.Evaluate",
+      "DispatchRoutes": [
+        {
+          "URL": "{{HumanEvaluateMicroservices}}/api/v1/Evaluate", // protocol and URL will change
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Human.Evaluate.Complete",
+      "DispatchRoutes": [
+        {
+          "URL": "{{GameMicroservices}}/api/v1/Notification", // update the SOR which is continuously pulled by UI
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Computer.Evaluate",
+      "DispatchRoutes": [
+        {
+          "URL": "{{ComputerEvaluateMicroservices}}/api/v1/Evaluate", // protocol and URL will change
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    },
+    {
+      "eventType": "RforU.Events.Game.Computer.Evaluate.Complete",
+      "DispatchRoutes": [
+        {
+          "URL": "{{ComputerMicroservices}}/api/v1/Notification", // update the SOR which is continuously pulled by UI
+          "Method": "PUT",
+          "IsAsync": true,
+          "data": "IGameDetails"
+        }
+      ]
+    }
+  ]
+}

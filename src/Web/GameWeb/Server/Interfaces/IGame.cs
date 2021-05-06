@@ -18,7 +18,6 @@
         string OpponentMove { get; set; }
 
 
-
         void InitGame();
     }
 }

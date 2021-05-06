@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Common.Events;
 using Microsoft.Extensions.DependencyInjection;
-using RforU.DistributedPackage.Interfaces;
-using RforU.DistributedPackage.Repositories;
-
 
 namespace RforU.DistributedPackage.MiddleWare
 {
@@ -13,9 +10,9 @@ namespace RforU.DistributedPackage.MiddleWare
             //singleton 
 
             // scoped
-           
-            //transit 
 
+            //transit 
+            service.AddScoped<IEventHubCoustomEventService, EventHubCustomEventService>();
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace Hash5.Tests
@@ -8,7 +7,6 @@ namespace Hash5.Tests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

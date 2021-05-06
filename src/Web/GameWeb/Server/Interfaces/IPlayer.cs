@@ -14,7 +14,7 @@ namespace RforU.Interfaces
 
         bool Available { get; set; }
         public DateTime OnlineSince { get; set; }
-        string  TypeOfPlayer { get; set; }
+        string TypeOfPlayer { get; set; }
         void InitPlayer(string playerId);
     }
 }

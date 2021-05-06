@@ -1,0 +1,6 @@
+projectKey=Mytryedge10
+serverUrl=http://localhost:8080
+serverVersion=8.8.0.42792
+dashboardUrl=http://localhost:8080/dashboard?id=Mytryedge10
+ceTaskId=AXlAUeodDsV_pvuUl9NB
+ceTaskUrl=http://localhost:8080/api/ce/task?id=AXlAUeodDsV_pvuUl9NB
