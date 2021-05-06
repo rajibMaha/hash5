@@ -1,7 +1,6 @@
 ﻿using Azure;
 using Azure.Messaging;
 using Azure.Messaging.EventGrid;
-using Common.Configuration;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;

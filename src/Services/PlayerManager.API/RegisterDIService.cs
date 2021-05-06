@@ -1,13 +1,9 @@
 ﻿#region
 
 using Microsoft.Extensions.DependencyInjection;
-using RforU.Interfaces;
-using RforU.Models;
 using RforU.PlayerManager.API.Interfaces;
 using RforU.PlayerManager.API.Repositories;
 using RforU.PlayerManager.API.Services;
-using RforU.Repositories;
-using RforU.Services;
 
 #endregion
 
